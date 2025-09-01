@@ -5,48 +5,58 @@ const addVeggiesButton = document.getElementById('addVeggies');
 const addSauceButton = document.getElementById('addSauce');
 const addCapButton = document.getElementById('addCap');
 
+function toggleIngredient(name, className, button) {
+    const existing = document.querySelector("." + className);
+
+    if (existing === null) {
+        const layer = document.createElement("div");
+        layer.innerText = name;
+        layer.classList.add(className);
+        document.getElementById("sandwich").appendChild(layer);
+        button.innerText = "Remove " + name;
+    } else {
+        existing.remove();
+        button.innerText = "Add " + name;
+    }
+}
 
 addBunButton.onclick = function() {
-    const layer = document.createElement("div");
-    layer.innerText = "Bun";
-    layer.classList.add("addBun");
-    document.getElementById("sandwich").appendChild(layer);
-    
+    toggleIngredient("Bun", "addBun", addBunButton);
 };
 
-
 addMeatButton.onclick = function() {
-    const layer = document.createElement("div");
-    layer.innerText = "Meat";
-    layer.classList.add("addMeat");
-    document.getElementById("sandwich").appendChild(layer);
-    
+    toggleIngredient("Meat", "addMeat", addMeatButton);
 };
 
 addCheeseButton.onclick = function() {
-    const layer = document.createElement("div");
-    layer.innerText = "Cheese";
-    layer.classList.add("addCheese");
-    document.getElementById("sandwich").appendChild(layer);
+    toggleIngredient("Cheese", "addCheese", addCheeseButton);
 };
 
 addVeggiesButton.onclick = function() {
-    const layer = document.createElement("div");
-    layer.innerText = "Veggies";
-    layer.classList.add("addVeggies");
-    document.getElementById("sandwich").appendChild(layer);
+    toggleIngredient("Veggies", "addVeggies", addVeggiesButton);
 };
 
 addSauceButton.onclick = function() {
-    const layer = document.createElement("div");
-    layer.innerText = "Sauce";
-    layer.classList.add("addSauce");
-    document.getElementById("sandwich").appendChild(layer);
+    toggleIngredient("Sauce", "addSauce", addSauceButton);
 };
 
 addCapButton.onclick = function() {
-    const layer = document.createElement("div");
-    layer.innerText = "Cap";
-    layer.classList.add("addCap");
-    document.getElementById("sandwich").appendChild(layer);
+    toggleIngredient("Cap", "addCap", addCapButton);
 };
+
+const order = ["addCap", "addSauce", "addVeggies", "addCheese", "addMeat", "addBun"];
+
+function reorderSandwich() {
+    const sandwich = document.getElementById("sandwich");
+    const layers = {};
+    order.forEach(className => {
+        layers[className] = document.querySelector("." + className);
+    });
+    sandwich.innerHTML = "";
+    order.forEach(className => {
+        if (layers[className]) {
+            sandwich.appendChild(layers[className]);
+        }
+    });
+}
+setInterval(reorderSandwich);
