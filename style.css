@@ -1,0 +1,49 @@
+.addBun {
+    width: 200px;
+    height: 40px;
+    margin-top: 5px;
+    background-color: burlywood;
+}
+
+.addMeat {
+    width: 200px;
+    height: 40px;
+    margin-top: 5px;
+    background-color: pink;
+}
+
+.addCheese {
+    width: 200px;
+    height: 40px;
+    margin-top: 5px;
+    background-color: yellow;
+}
+
+.addVeggies {
+    width: 200px;
+    height: 40px;
+    margin-top: 5px;
+    background-color: green;
+}
+
+.addSauce {
+    width: 200px;
+    height: 40px;
+    margin-top: 5px;
+    background-color: red;
+}
+
+.addCap {
+    width: 200px;
+    height: 40px;
+    margin-top: 5px;
+    background-color: burlywood;
+}
+
+#sandwichContainer {
+    background-color: grey;
+    width: 220px;
+    height: auto;
+    margin: 100px;
+    padding: 50px;
+}
